@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Keyboard Mapping Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Custom Keyboard Mapping Tool</h1>
+    <p>Enter a string and get the converted output based on your keyboard layout mappings.</p>
+
+    <h2>Input Text</h2>
+    <input type="text" id="inputText" value="sudo reboot" />
+
+    <button onclick="mapInput()">Get Mapped Output</button>
+
+    <h2>Mapped Output:</h2>
+    <p id="mappedOutput"></p>
+
+    <script>
+    // Define the custom key mappings based on user input
+    const keyMapping = {
+        'a': 'a',
+        'b': 'b',
+        'c': 'c',
+        'd': 'g',
+        'e': 'k',
+        'f': 'e',
+        'g': 't',
+        'h': 'h',
+        'i': 'l',
+        'j': 'y',
+        'k': 'n',
+        'l': 'u',
+        'm': 'm',
+        'n': 'j',
+        'o': ';',
+        'p': 'r',
+        'q': 'q',
+        'r': 's',
+        's': 'd',
+        't': 'f',
+        'u': 'i',
+        'v': 'v',
+        'w': 'w',
+        'x': 'x',
+        'y': 'o',
+        'z': 'z'
+    };
+
+    // Function to map the input text based on the key mappings
+    function mapInput() {
+        const inputText = document.getElementById("inputText").value;
+        let mappedText = '';
+
+        // Loop through each character in the input text
+        for (let i = 0; i < inputText.length; i++) {
+            const char = inputText[i].toLowerCase();
+            if (keyMapping[char]) {
+                // Replace the character with its mapped counterpart
+                mappedText += keyMapping[char];
+            } else {
+                // If the character doesn't exist in the mapping, leave it unchanged
+                mappedText += inputText[i];
+            }
+        }
+
+        // Display the mapped output
+        document.getElementById("mappedOutput").textContent = mappedText;
+
+        // Speak out the mapped text
+        const speech = new SpeechSynthesisUtterance("Conversion Completed type the below mapped output using ur defect keyboard");
+        speech.lang = 'en-US';  // Set language to English
+        window.speechSynthesis.speak(speech);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+for install in raspberry pi
+https://circuitdigest.com/microcontroller-projects/optical-character-recognition-ocr-using-tesseract-on-raspberry-pi
